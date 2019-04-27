@@ -2,7 +2,6 @@
 
 # 框架引入
 > go get -u github.com/ouxuanserver/osmanthuswine
- fix
 # 开始
 
 
