@@ -1,19 +1,8 @@
 ## 内部使用基于go-chi的web框架
 
 # 框架引入
-> go get -u github.com/wailovet/osmanthuswine
-
-### 目录结构
-```
-app
- |--index
-      |--index.go
-html
- |--静态文件....
-main.go
-config.json
-```
-
+> go get -u github.com/ouxuanserver/osmanthuswine
+ 
 # 开始
 #### 创建以上目录结构
 
@@ -45,8 +34,8 @@ package main
 
 import (
 	"./app/index"
-	"github.com/wailovet/osmanthuswine"
-	"github.com/wailovet/osmanthuswine/src/core"
+	"github.com/ouxuanserver/osmanthuswine"
+	"github.com/ouxuanserver/osmanthuswine/src/core"
 )
 
 func main() {
@@ -64,7 +53,7 @@ func main() {
 package index
 
 import (
-    "github.com/wailovet/osmanthuswine/src/core"
+    "github.com/ouxuanserver/osmanthuswine/src/core"
 )
 
 type Index struct {
@@ -194,7 +183,7 @@ max_open_conn为可支持最大连接数(未测试是否可用
 package index
 
 import (
-	"github.com/wailovet/osmanthuswine/src/core"
+	"github.com/ouxuanserver/osmanthuswine/src/core"
 	"gopkg.in/olahol/melody.v1"
 )
 
