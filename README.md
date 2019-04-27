@@ -60,7 +60,7 @@ type Index struct {
     core.Controller
 }
 
-/*
+/* 
  *   访问url:http://{host}:{port}/{api_router}/{包名首字母大写}/{结构名首字母大写}/{方法名首字母小写}.json
  *   例:http://127.0.0.1:8808/Api/Index/Index/index.json
  */
