@@ -2,9 +2,8 @@
 
 # 框架引入
 > go get -u github.com/ouxuanserver/osmanthuswine
- 
+ fix
 # 开始
-#### 创建以上目录结构
 
 
 + /config.json 配置文件
@@ -16,6 +15,7 @@
   "cross_domain": "*",
   "post_max_memory": 1024000,
   "update_path": "new_exe",
+  "api_router": "/Api/*",
   "db": {
     "host": "",
     "port": "",
@@ -47,7 +47,7 @@ func main() {
 ```
 
 
-+ /app/index/index.go文件
++ /index/index.go文件
 
 ```
 package index
@@ -60,6 +60,10 @@ type Index struct {
     core.Controller
 }
 
+/*
+ *   访问url:http://{host}:{port}/{api_router}/{包名首字母大写}/{结构名首字母大写}/{方法名首字母小写}.json
+ *   例:http://127.0.0.1:8808/Api/Index/Index/index.json
+ */
 func (that *Index) Index() {
     that.DisplayByData(that.Request.REQUEST)
 }
