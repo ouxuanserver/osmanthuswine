@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/wailovet/osmanthuswine"
-	"github.com/wailovet/osmanthuswine/example/app"
-	"github.com/wailovet/osmanthuswine/src/core"
+	"github.com/ouxuanserver/osmanthuswine"
+	"github.com/ouxuanserver/osmanthuswine/example/app"
+	"github.com/ouxuanserver/osmanthuswine/src/core"
 )
 
 func main() {

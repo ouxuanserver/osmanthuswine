@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/wailovet/osmanthuswine/src/session"
+	"github.com/ouxuanserver/osmanthuswine/src/session"
 	"io/ioutil"
 	"log"
 	"mime/multipart"

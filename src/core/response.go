@@ -2,7 +2,7 @@ package core
 
 import (
 	"encoding/json"
-	"github.com/wailovet/osmanthuswine/src/session"
+	"github.com/ouxuanserver/osmanthuswine/src/session"
 	"net/http"
 	"strings"
 )

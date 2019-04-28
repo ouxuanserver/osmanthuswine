@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/wailovet/osmanthuswine/src/interfaces"
+	"github.com/ouxuanserver/osmanthuswine/src/interfaces"
 	"log"
 	"reflect"
 	"strings"

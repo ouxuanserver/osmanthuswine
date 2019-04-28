@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/wailovet/osmanthuswine/src/core"
+	"github.com/ouxuanserver/osmanthuswine/src/core"
 	"gopkg.in/olahol/melody.v1"
 )
 

@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/wailovet/osmanthuswine/src/interfaces"
+	"github.com/ouxuanserver/osmanthuswine/src/interfaces"
 	"gopkg.in/olahol/melody.v1"
 	"net/http"
 	"sync"
