@@ -3,7 +3,7 @@
 # 框架引入
 > go get -u github.com/ouxuanserver/osmanthuswine
 # 开始
-
+...
 
 + /config.json 配置文件
 
