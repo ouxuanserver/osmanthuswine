@@ -129,7 +129,7 @@ require (
 	github.com/opentracing/basictracer-go v1.0.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
 	github.com/openzipkin-contrib/zipkin-go-opentracing v0.3.5 // indirect
-	github.com/ouxuanserver/osmanthuswine v0.0.0-20190427102624-5e046303294e
+	github.com/ouxuanserver/osmanthuswine v0.0.0-20190428063721-276ad989fbc4
 	github.com/oxtoacart/bpool v0.0.0-20190227141107-8c4636f812cc // indirect
 	github.com/paulbellamy/ratecounter v0.2.0 // indirect
 	github.com/pborman/uuid v1.2.0 // indirect
