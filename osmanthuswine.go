@@ -66,6 +66,8 @@ func RunProg(state overseer.State) {
 
 	cc := core.GetInstanceConfig()
 
+	helper.GetInstanceLog().Out("开始监听:", cc.Host+":"+cc.Port)
+
 	r := GetChiRouter()
 
 	apiRouter := cc.ApiRouter
@@ -105,7 +107,7 @@ func RunProg(state overseer.State) {
 
 	})
 
-	r.Handle("/html/*", http.StripPrefix("/html/", http.FileServer(http.Dir("html"))))
+	r.Handle("/*", http.FileServer(http.Dir("html")))
 	//r.HandleFunc("/html/*", func(writer http.ResponseWriter, request *http.Request) {
 	//	path := request.URL.Path
 	//	if path == "/html/" {
@@ -135,7 +137,6 @@ func RunProg(state overseer.State) {
 	if err := http.Serve(state.Listener, r); err != nil {
 		log.Fatal(err)
 	}
-	helper.GetInstanceLog().Out("开始监听:", cc.Host+":"+cc.Port)
 	//http.ListenAndServe(cc.Host+":"+cc.Port, r)
 
 }
