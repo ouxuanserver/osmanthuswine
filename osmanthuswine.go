@@ -38,7 +38,7 @@ func GetChiRouter() *chi.Mux {
 	return chiRouter
 }
 func Run() {
-	path, _ := GetCurrentPath()
+	path, _ := os.Getwd()
 	os.Chdir(path)
 	log.Println("工作目录:", path)
 	cc := core.GetInstanceConfig()
