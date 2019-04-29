@@ -6,7 +6,6 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/ouxuanserver/osmanthuswine/src/core"
-	"github.com/ouxuanserver/osmanthuswine/src/helper"
 	"github.com/ouxuanserver/osmanthuswine/src/session"
 	"github.com/wailovet/overseer"
 	"github.com/wailovet/overseer/fetcher"
@@ -15,6 +14,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"osmanthuswine/src/helper"
 	"path/filepath"
 	"runtime"
 	"runtime/debug"
@@ -65,7 +65,6 @@ func Run() {
 func RunProg(state overseer.State) {
 
 	cc := core.GetInstanceConfig()
-	helper.GetInstanceLog().Out("开始监听:", cc.Host+":"+cc.Port)
 
 	r := GetChiRouter()
 
@@ -133,7 +132,10 @@ func RunProg(state overseer.State) {
 	//
 	//})
 
-	http.Serve(state.Listener, r)
+	if err := http.Serve(state.Listener, r); err != nil {
+		log.Fatal(err)
+	}
+	helper.GetInstanceLog().Out("开始监听:", cc.Host+":"+cc.Port)
 	//http.ListenAndServe(cc.Host+":"+cc.Port, r)
 
 }
