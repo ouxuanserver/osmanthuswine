@@ -10,7 +10,6 @@ import (
 	"github.com/ouxuanserver/osmanthuswine/src/session"
 	"github.com/wailovet/overseer"
 	"github.com/wailovet/overseer/fetcher"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -107,30 +106,32 @@ func RunProg(state overseer.State) {
 
 	})
 
-	r.HandleFunc("/*", func(writer http.ResponseWriter, request *http.Request) {
-		path := request.URL.Path
-		if path == "/" {
-			path = "/index.html"
-		}
-
-		helper.GetInstanceLog().Out("静态文件:", "./html"+path)
-
-		f, err := os.Stat("./html" + path)
-		if err == nil {
-			if f.IsDir() {
-				path += "/index.html"
-			}
-			data, err := ioutil.ReadFile("./html" + path)
-			if err == nil {
-				writer.Write(data)
-				return
-			}
-		}
-
-		writer.WriteHeader(404)
-		writer.Write([]byte(err.Error()))
-
-	})
+	r.Handle("/html/*", http.StripPrefix("/html/", http.FileServer(http.Dir("html"))))
+	//r.HandleFunc("/html/*", func(writer http.ResponseWriter, request *http.Request) {
+	//	path := request.URL.Path
+	//	if path == "/html/" {
+	//		path = "/index.html"
+	//	}
+	//
+	//	path=strings.TrimLeft(path,"/")
+	//	helper.GetInstanceLog().Out("静态文件:", path)
+	//
+	//	f, err := os.Stat(path)
+	//	if err == nil {
+	//		if f.IsDir() {
+	//			path += "/index.html"
+	//		}
+	//		data, err := ioutil.ReadFile(path)
+	//		if err == nil {
+	//			writer.Write(data)
+	//			return
+	//		}
+	//	}
+	//
+	//	writer.WriteHeader(404)
+	//	writer.Write([]byte(err.Error()))
+	//
+	//})
 
 	http.Serve(state.Listener, r)
 	//http.ListenAndServe(cc.Host+":"+cc.Port, r)
