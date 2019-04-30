@@ -24,6 +24,12 @@ import (
 
 var chiRouter *chi.Mux
 
+func init() {
+	//获取相对于执行文件的工作目录的绝对路径，并且把路径设置为工作目录
+	if err := os.Chdir(filepath.Dir(os.Args[0])); err != nil {
+		log.Fatal("设置工作目录失败：", err)
+	}
+}
 func GetChiRouter() *chi.Mux {
 	if chiRouter == nil {
 
@@ -37,8 +43,8 @@ func GetChiRouter() *chi.Mux {
 	return chiRouter
 }
 func Run() {
-	path, _ := GetCurrentPath()
-	os.Chdir(path)
+	path, _ := os.Getwd()
+
 	log.Println("工作目录:", path)
 	cc := core.GetInstanceConfig()
 
