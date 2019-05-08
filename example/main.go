@@ -8,6 +8,6 @@ import (
 
 func main() {
 	core.GetInstanceRouterManage().Registered(&app.Wstest{})
-	//core.GetInstanceRouterManage().Registered(&app.Test{})
+	core.GetInstanceRouterManage().Registered(&app.Ctltest{})
 	osmanthuswine.Run()
 }

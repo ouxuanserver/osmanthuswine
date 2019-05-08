@@ -1,11 +1,12 @@
 package core
 
 import (
-	"github.com/ouxuanserver/osmanthuswine/src/interfaces"
 	"log"
 	"reflect"
 	"strings"
 	"unicode"
+
+	"github.com/ouxuanserver/osmanthuswine/src/interfaces"
 )
 
 type RouterManage struct {
@@ -101,12 +102,19 @@ func (rm *RouterManage) RouterSend(urlPath string, request Request, response Res
 	}
 
 	init := vc.MethodByName("ControllerInit")
+	prepare := vc.MethodByName("Prepare")
 	if init.IsValid() {
 		init.Call([]reflect.Value{reflect.ValueOf(request), reflect.ValueOf(response)})
+		if prepare.IsValid() {
+			prepare.Call(nil)
+		}
 		f.Call(nil)
 	} else {
 		//兼容模式
 		log.Println("兼容模式")
+		if prepare.IsValid() {
+			prepare.Call(nil)
+		}
 		f.Call([]reflect.Value{reflect.ValueOf(request), reflect.ValueOf(response)})
 	}
 
