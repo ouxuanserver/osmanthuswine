@@ -78,7 +78,7 @@ func (rm *RouterManage) RouterSend(urlPath string, request Request, response Res
 	vc := reflect.New(rm.RegisteredData[ctr])
 
 	wsinit := vc.MethodByName("WebSocketInit")
-	if wsinit.IsValid() {
+	if wsinit.IsValid() || request.HEADER["Upgrade"] == "websocket" {
 		response.IsWebSocket = true
 		hand := vc.Interface().(interfaces.WebSocketInterface)
 		ws := GetWebSocket(ctr+"-"+fun, hand)
